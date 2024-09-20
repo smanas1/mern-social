@@ -9,6 +9,9 @@ export const registerController = async (req, res) => {
 
     res.send(userinfo);
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
+    if (error.code === 11000) {
+      return res.status(400).send("Email already exists");
+    }
   }
 };
